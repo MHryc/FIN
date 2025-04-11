@@ -1,6 +1,9 @@
 # FIN
 
-Numerical approximation of definite integrals writen in Fortran.
+Numerical integrator of definite integrals writen in Fortran. Currently the only
+implemented method is 
+$$ \int_{a}^{b} f(x) dx = \sum_{1}^{\frac{b - a}{dx}} f(x)\cdot dx $$
+for $ dx = 0.01 $
 
 ## Usage
 
