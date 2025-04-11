@@ -13,7 +13,7 @@ program integrate
     character(32) :: filename
     ! differential size
     real, parameter :: dx = 0.01
-    real :: a, b, x, y
+    real :: a, b, x, y, integral
     ! polynomial coefficients vector
     real, allocatable :: coefs(:)
     ! iterator, file handle, number of args, length of coefs array and existance bool
@@ -53,16 +53,18 @@ program integrate
     enddo
 
     print *, "================"
-    ! get function value at each step
+    ! get function value at each step and integrate
+    integral = 0
     x = a
     do while (x < b)
         y = 0.0
         do concurrent(i=1:size(coefs))
             ! y += ax + bx^2 ...
-            y = coefs(i) * x**(i - 1) + y
+            y = coefs(i) * (x)**(i - 1) + y
+            integral = integral + y * dx
         enddo
 
-        print *, x, y
+        print *, x, y, integral
 
         x = x + dx
     enddo
