@@ -3,7 +3,7 @@
 Numerical integrator of definite integrals writen in Fortran. Currently the only
 implemented method is a constant step quadrature:
 
-$$ \int_{a}^{b} f(x) dx = \sum_{1}^{\lceil \frac{b - a}{dx} \rceil} f(x)\cdot dx $$
+$$ \int_{a}^{b} f(x) dx = \sum_{i=1}^{\lceil \frac{b - a}{dx} \rceil} f(a + i\cdot dx)\cdot dx $$
 
 for $ dx = 0.01 $
 
