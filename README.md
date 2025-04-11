@@ -32,4 +32,5 @@ for eg.
 
 would integrate 
 
-$$ 1 + 2x + 3x^2 + 4x^3 \mbox{for x:} -1 \leq x \leq 1 $$
+$$ 1 + 2x + 3x^2 + 4x^3 $$
+$$ \mbox{for x: } -1 \leq x \leq 1 $$
