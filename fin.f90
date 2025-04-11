@@ -61,7 +61,6 @@ program integrate
         do concurrent(i=1:size(coefs))
             ! y += ax + bx^2 ...
             y = coefs(i) * (x)**(i - 1) + y
-            print *, y
         enddo
         integral = integral + y * dx
 
