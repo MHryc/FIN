@@ -30,4 +30,6 @@ for eg.
 1   2   3   4
 ```
 
-would integrate $1 + 2x + 3x^2 + 4x^3 $ for $ -1 \leq x \leq 1$
+would integrate 
+
+$$ 1 + 2x + 3x^2 + 4x^3 $ for $ -1 \leq x \leq 1 $$
