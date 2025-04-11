@@ -1,5 +1,7 @@
 # FIN
 
+Numerical approximation of definite integrals writen in Fortran.
+
 ## Usage
 
 Run:
