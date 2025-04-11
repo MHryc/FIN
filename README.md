@@ -1,7 +1,7 @@
 # FIN
 
 Numerical integrator of definite integrals writen in Fortran. Currently the only
-implemented method is 
+implemented method is a constant step quadrature:
 
 $$ \int_{a}^{b} f(x) dx = \sum_{1}^{\frac{b - a}{dx}} f(x)\cdot dx $$
 
