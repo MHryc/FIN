@@ -9,22 +9,25 @@ for $ dx = 0.01 $
 
 ## Usage
 
-Run:
+Compile `fin.f90` into `fin`, and run:
 
 ```
 ./fin fin.cfg
 ```
 
-To specify polynomial coefficients and range over which to integrate edit the
-`fin.cfg` file.
-
-This:
+Coefficients, integration domain and coefficients are defined in `fin.cfg` file
+that has exactly 2 lines.
 
 ```
-4	-3	3
-0.69	21	1.81	0.9773
+<number of coefficients>\t<domain lower bound>\t<domain upper bound>
+<1st coefficient>\t...<nth coefficient>
 ```
 
-represents:
+for eg.
 
-$$ \int_{-3}^{3} 0.69\cdot x^0 + 21\cdot x^1 + 1.81\cdot x^2 + 0.9773\cdot x^3 dx $$
+```
+4   -1  1
+1   2   3   4
+```
+
+would integrate $ 1 + 2x + 3x^2 + 4x^3 $ for $ -1 \leq x \leq 1 $.
