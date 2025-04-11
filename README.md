@@ -19,6 +19,5 @@ This:
 ```
 
 represents:
-\[
-    \int_{-3}^{3} 0.69\cdot x^0 + 21\cdot x^1 + 1.81\cdot x^2 + 0.9773\cdot x^3 dx
-\]
+
+$$ \int_{-3}^{3} 0.69\cdot x^0 + 21\cdot x^1 + 1.81\cdot x^2 + 0.9773\cdot x^3 dx $$
