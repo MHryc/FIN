@@ -87,18 +87,18 @@ program integrate
         enddo
     endif
 
-    block ! trapezoid approach, doesn't work yet
-        real :: y1, y2, integral2
-        do while (x < b)
-            y1 = 0.0
-            do concurrent(i=1:size(coefs))
-                y1 = coefs(i) * (x)**(i - 1) + y1
-                y2 = coefs(i) * (x + dx)**(i - 1) + y2
-            enddo
-            integral2 = integral + y1 * dx + ((y2 - y1) * dx) / 2
-            x = x + dx
-        enddo
-        print *, integral2
-    endblock
+!    block ! trapezoid approach, doesn't work yet
+!        real :: y1, y2, integral2
+!        do while (x < b)
+!            y1 = 0.0
+!            do concurrent(i=1:size(coefs))
+!                y1 = coefs(i) * (x)**(i - 1) + y1
+!                y2 = coefs(i) * (x + dx)**(i - 1) + y2
+!            enddo
+!            integral2 = integral + y1 * dx + ((y2 - y1) * dx) / 2
+!            x = x + dx
+!        enddo
+!        print *, integral2
+!    endblock
 
 end program integrate
