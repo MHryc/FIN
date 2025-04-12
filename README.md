@@ -19,14 +19,19 @@ Coefficients, integration domain and coefficients are defined in `fin.cfg` file
 that has exactly 2 lines.
 
 ```
-<number of coefficients>\t<domain lower bound>\t<domain upper bound>
+<number of coefficients>\t<domain lower bound>\t<domain upper bound>\t<briefmode switch>
 <1st coefficient>\t...<nth coefficient>
 ```
+
+if briefmode is turned on only the final result of integration is printed.
+Otherwise you'll get a message explaining the input and a table of x, y and
+current integral as a cummulative sum. Briefmode entry in `fin.cfg` must be a
+Fortran bool, i.e one of those `.true.`, `.t.`, `.false.`, `.f.`.
 
 for eg.
 
 ```
-4   -1  1
+4   -1  1   .true.
 1   2   3   4
 ```
 

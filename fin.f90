@@ -13,12 +13,15 @@ program integrate
     character(32) :: filename
     ! differential size
     real, parameter :: dx = 0.01
+    ! integration domain, function x and y, final integral value
     real :: a, b, x, y, integral
     ! polynomial coefficients vector
     real, allocatable :: coefs(:)
     ! iterator, file handle, number of args, length of coefs array and existance bool
     integer :: i, io, argcount, coefs_len
-    logical :: exists
+    logical :: exists, briefmode
+    ! integer for switching which algorithm to use for integration
+    integer :: algoswitch
 
     ! check if filename (and nothing else) was passed
     argcount = command_argument_count()
@@ -38,35 +41,64 @@ program integrate
     ! handle the file
     open(newunit=io, file=filename, status="old", action="read")
     ! read the number of coefficients from file line1 and the range for integration
-    read(io, *) coefs_len, a, b
+    read(io, *) coefs_len, a, b, briefmode
     ! allocate and read coefficients into array based on provided size
     allocate(coefs(coefs_len))
     read(io, *) coefs
     close(io)
 
     ! printing coefs how I see them
-    print *, "Calculating values of a:", size(coefs), " degree polynomial"
-    print *, "over ", "[", a, b, "] range and dx = ", dx
-    print *, "With these coefficients:"
-    do i = 1, size(coefs)
-        print *, coefs(i)
-    enddo
+    if (.not. briefmode) then
+        print *, "Calculating values of a:", size(coefs), " degree polynomial"
+        print *, "over ", "[", a, b, "] range and dx = ", dx
+        print *, "With these coefficients:"
+        do i = 1, size(coefs)
+            print *, coefs(i)
+        enddo
+        print *, "================"
+    endif
 
-    print *, "================"
     ! get function value at each step and integrate
     integral = 0
     x = a
-    do while (x < b)
-        y = 0.0
-        do concurrent(i=1:size(coefs))
-            ! y += ax + bx^2 ...
-            y = coefs(i) * (x)**(i - 1) + y
+
+    if (briefmode) then
+        do while (x < b)
+            y = 0.0
+            do concurrent(i=1:size(coefs))
+                y = coefs(i) * (x)**(i - 1) + y
+            enddo
+            integral = integral + y * dx
+            x = x + dx
         enddo
-        integral = integral + y * dx
+        print *, integral
+    else
+        do while (x < b)
+            y = 0.0
+            do concurrent(i=1:size(coefs))
+                ! y += ax + bx^2 ...
+                y = coefs(i) * (x)**(i - 1) + y
+            enddo
+            integral = integral + y * dx
 
-        print *, x, y, integral
+            print *, x, y, integral
 
-        x = x + dx
-    enddo
+            x = x + dx
+        enddo
+    endif
+
+    block ! trapezoid approach, doesn't work yet
+        real :: y1, y2, integral2
+        do while (x < b)
+            y1 = 0.0
+            do concurrent(i=1:size(coefs))
+                y1 = coefs(i) * (x)**(i - 1) + y1
+                y2 = coefs(i) * (x + dx)**(i - 1) + y2
+            enddo
+            integral2 = integral + y1 * dx + ((y2 - y1) * dx) / 2
+            x = x + dx
+        enddo
+        print *, integral2
+    endblock
 
 end program integrate
