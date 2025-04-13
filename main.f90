@@ -62,30 +62,6 @@ program integrate
     integral = 0
     x = a
 
-    if (briefmode) then
-        do while (x < b)
-            y = 0.0
-            do concurrent(i=1:size(coefs))
-                y = coefs(i) * (x)**(i - 1) + y
-            enddo
-            integral = integral + y * dx
-            x = x + dx
-        enddo
-        print *, integral
-    else
-        do while (x < b)
-            y = 0.0
-            do concurrent(i=1:size(coefs))
-                ! y += ax + bx^2 ...
-                y = coefs(i) * (x)**(i - 1) + y
-            enddo
-            integral = integral + y * dx
-
-            print *, x, y, integral
-
-            x = x + dx
-        enddo
-    endif
 
 !    block ! trapezoid approach, doesn't work yet
 !        real :: y1, y2, integral2
