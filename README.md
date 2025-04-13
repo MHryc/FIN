@@ -1,10 +1,7 @@
 # FIN
 
-Numerical integrator of definite integrals writen in Fortran. Currently the only
-implemented methods are constant step quadrature, i.e. left Riemann sum, and
-constant step trapezoid rule.
-
-$$ \int_{a}^{b} f(x) dx = \sum_{i=0}^{\lfloor \frac{b - a}{dx} \rfloor } f(a + i\cdot dx)\cdot dx $$
+Implementations of numerical methods in Fortran, with the end goal of a simple
+MD simulation of a small molecular system.
 
 ## Usage
 
@@ -33,6 +30,7 @@ ignored, but must be included in `fin.cfg`).
 | --- | --- |
 | Riemann sum | riemann |
 | Trapezoid rule | trapezoid |
+| Basic differentation | basic\_diff |
 
 2nd line contains polynomial coefficients.
 
