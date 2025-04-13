@@ -1,5 +1,5 @@
 FC = gfortran
-FFLAGS = -O2
+FFLAGS = -O2 -ftree-vectorize -march=native
 
 #OUTDIR = bin
 #TARGET = $(OUTDIR)/main
