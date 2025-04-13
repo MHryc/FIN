@@ -15,3 +15,6 @@ bin/main: src/main.f90 bin/algorithms.o
 
 fin: bin/main
 	ln -s $< fin
+
+clean:
+	rm *mod
