@@ -30,6 +30,7 @@ ignored, but must be included in `fin.cfg`).
 ### available algorithms
 
 | algorithm | name |
+| --- | --- |
 | Riemann sum | riemann |
 | Trapezoid rule | trapezoid |
 
