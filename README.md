@@ -11,6 +11,8 @@ cd FIN
 make
 ```
 
+requires `gfortran`
+
 ### config file (`fin.cfg`)
 
 Currently config file has 2 lines.
